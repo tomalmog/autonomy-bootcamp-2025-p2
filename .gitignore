@@ -1,0 +1,14 @@
+# IDEs
+.idea/
+.vscode/
+
+# Python
+__pycache__/
+venv/
+
+# Logging
+*log*
+
+# Make bootcampers submit their logs as answers
+!logs/
+!logs/**
