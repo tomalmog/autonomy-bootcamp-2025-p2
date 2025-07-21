@@ -41,9 +41,9 @@ def main() -> int:
 
     local_logger.info("Logger initialized")
 
-    # Task is to send NUM_TRIALS heartbeats at a rate of 1Hz
-    def send_heartbeats() -> int:
-        for _ in range(NUM_TRIALS):
+    # Task is to send trials heartbeats at a rate of 1Hz
+    def send_heartbeats(trials: int) -> int:
+        for _ in range(trials):
             try:
                 connection.mav.heartbeat_send(
                     mavutil.mavlink.MAV_TYPE_GENERIC,
@@ -60,14 +60,20 @@ def main() -> int:
             time.sleep(HEARTBEAT_PERIOD)
         return 0
 
-    if send_heartbeats() != 0:
+    if send_heartbeats(NUM_TRIALS) != 0:
         return -1
 
     # Do not send heartbeats for a period of time to mimick the drone disconnected
     time.sleep(HEARTBEAT_PERIOD * (DISCONNECT_THRESHOLD + NUM_DISCONNECTS))
 
     # Reconnect
-    if send_heartbeats() != 0:
+    if send_heartbeats(NUM_TRIALS) != 0:
+        return -1
+    
+    # Drop 1 heartbeat, should still be connected
+    time.sleep(HEARTBEAT_PERIOD)
+
+    if send_heartbeats(1) != 0:
         return -1
 
     local_logger.info("Passesd!")

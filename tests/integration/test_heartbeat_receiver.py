@@ -118,7 +118,7 @@ def main() -> int:
 
     # Just set a timer to stop the worker after a while, since the worker infinite loops
     threading.Timer(
-        HEARTBEAT_PERIOD * (NUM_TRIALS * 2 + DISCONNECT_THRESHOLD + NUM_DISCONNECTS),
+        HEARTBEAT_PERIOD * (NUM_TRIALS * 2 + DISCONNECT_THRESHOLD + NUM_DISCONNECTS + 2),
         stop,
         (args, ),
     ).start()
