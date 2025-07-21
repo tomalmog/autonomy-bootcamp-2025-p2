@@ -69,7 +69,7 @@ def main() -> int:
     # Reconnect
     if send_heartbeats(NUM_TRIALS) != 0:
         return -1
-    
+
     # Drop 1 heartbeat, should still be connected
     time.sleep(HEARTBEAT_PERIOD)
 
