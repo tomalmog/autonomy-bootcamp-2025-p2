@@ -78,7 +78,7 @@ def put_queue(
     """
     Place mocked inputs into the input queue periodically with period TELEMETRY_PERIOD.
     """
-    pass  # Add logic to place the mocked inputs into your worker's input queue
+    pass  # Add logic to place the mocked inputs into your worker's input queue periodically
 # =================================================================================================
 #                            ↑ BOOTCAMPERS MODIFY ABOVE THIS COMMENT ↑
 # =================================================================================================
@@ -130,7 +130,7 @@ def main() -> int:
 
     # Create your queues
 
-    # Test cases, EDIT AT YOUR OWN RISK!
+    # Test cases, DO NOT EDIT!
     path = [
         # Test singular points
         telemetry.TelemetryData(x=0, y=0, z=29, yaw=0, x_velocity=0, y_velocity=0, z_velocity=4),

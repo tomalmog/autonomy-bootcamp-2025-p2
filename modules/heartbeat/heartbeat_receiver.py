@@ -20,6 +20,7 @@ class HeartbeatReceiver:
     @classmethod
     def create(
         cls,
+        connection: mavutil.mavfile,
         args,  # Put your own arguments here
         local_logger: logger.Logger,
     ):
@@ -31,6 +32,7 @@ class HeartbeatReceiver:
     def __init__(
         self,
         key: object,
+        connection: mavutil.mavfile,
         args,  # Put your own arguments here
     ) -> None:
         assert key is HeartbeatReceiver.__private_key, "Use create() method"

@@ -75,7 +75,9 @@ class Telemetry:
     @classmethod
     def create(
         cls,
+        connection: mavutil.mavfile,
         args,  # Put your own arguments here
+        local_logger: logger.Logger,
     ):
         """
         Falliable create (instantiation) method to create a Telemetry object.
@@ -85,7 +87,9 @@ class Telemetry:
     def __init__(
         self,
         key: object,
+        connection: mavutil.mavfile,
         args,  # Put your own arguments here
+        local_logger: logger.Logger,
     ) -> None:
         assert key is Telemetry.__private_key, "Use create() method"
 
