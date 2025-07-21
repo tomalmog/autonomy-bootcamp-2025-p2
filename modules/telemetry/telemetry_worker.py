@@ -17,7 +17,9 @@ from ..common.modules.logger import logger
 #                            ↓ BOOTCAMPERS MODIFY BELOW THIS COMMENT ↓
 # =================================================================================================
 def telemetry_worker(
+    connection: mavutil.mavfile,
     args,  # Place your own arguments here
+    # Add other necessary worker arguments here
 ) -> None:
     """
     Worker process.

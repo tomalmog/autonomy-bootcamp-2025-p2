@@ -17,7 +17,10 @@ from ..common.modules.logger import logger
 #                            ↓ BOOTCAMPERS MODIFY BELOW THIS COMMENT ↓
 # =================================================================================================
 def command_worker(
-    args,   # Put your own arguments here
+    connection: mavutil.mavfile,
+    target: command.Position,
+    args,  # Place your own arguments here
+    # Add other necessary worker arguments here
 ) -> None:
     """
     Worker process.
