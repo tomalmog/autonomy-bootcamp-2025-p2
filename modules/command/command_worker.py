@@ -49,7 +49,6 @@ def command_worker(
     # =============================================================================================
     # Instantiate class object (command.Command)
 
-
     # Main loop: do work.
 
 

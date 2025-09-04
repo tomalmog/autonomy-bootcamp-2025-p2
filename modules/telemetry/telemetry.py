@@ -97,7 +97,7 @@ class Telemetry:
 
     def run(
         self,
-        args, # Put your own arguments here
+        args,  # Put your own arguments here
     ):
         """
         Receive LOCAL_POSITION_NED and ATTITUDE messages from the drone,
@@ -107,6 +107,8 @@ class Telemetry:
         # Read MAVLink message ATTITUDE (30)
         # Return the most recent of both, and use the most recent message's timestamp
         pass
+
+
 # =================================================================================================
 #                            ↑ BOOTCAMPERS MODIFY ABOVE THIS COMMENT ↑
 # =================================================================================================

@@ -48,7 +48,6 @@ def telemetry_worker(
     # =============================================================================================
     # Instantiate class object (telemetry.Telemetry)
 
-
     # Main loop: do work.
 
 

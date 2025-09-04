@@ -75,50 +75,37 @@ def main() -> int:
     # =============================================================================================
     # Create a worker controller
 
-
     # Create a multiprocess manager for synchronized queues
 
-
     # Create queues
-
 
     # Create worker properties for each worker type (what inputs it takes, how many workers)
     # Heartbeat sender
 
-
     # Heartbeat receiver
-
 
     # Telemetry
 
-
     # Command
-
 
     # Create the workers (processes) and obtain their managers
 
-
     # Start worker processes
-
 
     main_logger.info("Started")
 
     # Main's work: read from all queues that output to main, and log any commands that we make
     # Continue running for 100 seconds or until the drone disconnects
 
-
     # Stop the processes
-
 
     main_logger.info("Requested exit")
 
     # Fill and drain queues from END TO START
 
-
     main_logger.info("Queues cleared")
 
     # Clean up worker processes
-
 
     main_logger.info("Stopped")
 

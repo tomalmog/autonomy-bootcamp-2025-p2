@@ -49,6 +49,8 @@ class HeartbeatReceiver:
         the connection is considered disconnected.
         """
         pass
+
+
 # =================================================================================================
 #                            ↑ BOOTCAMPERS MODIFY ABOVE THIS COMMENT ↑
 # =================================================================================================

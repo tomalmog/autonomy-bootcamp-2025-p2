@@ -48,7 +48,6 @@ def heartbeat_sender_worker(
     # =============================================================================================
     # Instantiate class object (heartbeat_sender.HeartbeatSender)
 
-
     # Main loop: do work.
 
 

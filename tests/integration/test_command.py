@@ -59,11 +59,11 @@ def stop(
     """
     Stop the workers.
     """
-    pass # Add logic to stop your worker
+    pass  # Add logic to stop your worker
 
 
 def read_queue(
-    args,  # Add any necessary arguments 
+    args,  # Add any necessary arguments
     main_logger: logger.Logger,
 ) -> None:
     """
@@ -79,6 +79,8 @@ def put_queue(
     Place mocked inputs into the input queue periodically with period TELEMETRY_PERIOD.
     """
     pass  # Add logic to place the mocked inputs into your worker's input queue periodically
+
+
 # =================================================================================================
 #                            ↑ BOOTCAMPERS MODIFY ABOVE THIS COMMENT ↑
 # =================================================================================================
@@ -215,12 +217,10 @@ def main() -> int:
     ]
 
     # Just set a timer to stop the worker after a while, since the worker infinite loops
-    threading.Timer(
-        TELEMETRY_PERIOD * len(path), stop, (args, )
-    ).start()
+    threading.Timer(TELEMETRY_PERIOD * len(path), stop, (args,)).start()
 
     # Put items into input queue
-    threading.Thread(target=put_queue, args=(args, )).start()
+    threading.Thread(target=put_queue, args=(args,)).start()
 
     # Read the main queue (worker outputs)
     threading.Thread(target=read_queue, args=(args, main_logger)).start()

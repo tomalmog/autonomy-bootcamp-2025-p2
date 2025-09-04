@@ -66,7 +66,6 @@ class Command:  # pylint: disable=too-many-instance-attributes
         """
         # Log average velocity for this trip so far
 
-
         # Use COMMAND_LONG (76) message, assume the target_system=1 and target_componenet=0
         # The appropriate commands to use are instructed below
 
@@ -76,6 +75,7 @@ class Command:  # pylint: disable=too-many-instance-attributes
         # Adjust direction (yaw) using MAV_CMD_CONDITION_YAW (115). Must use relative angle to current state
         # String to return to main: "CHANGING_YAW: {degree you changed it by in range [-180, 180]}"
         # Positive angle is counter-clockwise as in a right handed system
+
 
 # =================================================================================================
 #                            ↑ BOOTCAMPERS MODIFY ABOVE THIS COMMENT ↑

@@ -50,7 +50,9 @@ def stop(
     """
     Stop the workers.
     """
-    pass # Add logic to stop your worker
+    pass  # Add logic to stop your worker
+
+
 # =================================================================================================
 #                            ↑ BOOTCAMPERS MODIFY ABOVE THIS COMMENT ↑
 # =================================================================================================
@@ -93,7 +95,7 @@ def main() -> int:
     # Create a worker controller for your worker
 
     # Just set a timer to stop the worker after a while, since the worker infinite loops
-    threading.Timer(HEARTBEAT_PERIOD * NUM_TRIALS, stop, (args, )).start()
+    threading.Timer(HEARTBEAT_PERIOD * NUM_TRIALS, stop, (args,)).start()
 
     heartbeat_sender_worker.heartbeat_sender_worker(
         # Place your own arguments here
