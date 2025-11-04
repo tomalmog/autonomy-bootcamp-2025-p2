@@ -2,6 +2,8 @@
 Command worker to make decisions based on Telemetry Data.
 """
 
+# pylint: disable=too-many-arguments, too-many-locals
+
 import os
 import pathlib
 
@@ -56,7 +58,7 @@ def command_worker(
     ok, instance = command.Command.create(
         connection,
         target,
-        TURNING_SPEED := 5.0,  # default turning speed if not specified elsewhere
+        5.0,  # default turning speed (deg/s)
         local_logger,
     )
     if not ok or instance is None:
