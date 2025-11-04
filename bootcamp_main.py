@@ -169,7 +169,9 @@ def main() -> int:
     for props in (hb_sender_props, hb_recv_props, telemetry_props, command_props):
         # Get Pylance to stop complaining
         assert props is not None
-        ok, mgr = worker_manager.WorkerManager.create(worker_properties=props, local_logger=main_logger)
+        ok, mgr = worker_manager.WorkerManager.create(
+            worker_properties=props, local_logger=main_logger
+        )
         if not ok or mgr is None:
             return -1
         worker_managers.append(mgr)
