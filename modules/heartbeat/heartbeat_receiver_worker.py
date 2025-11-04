@@ -18,8 +18,10 @@ from ..common.modules.logger import logger
 # =================================================================================================
 def heartbeat_receiver_worker(
     connection: mavutil.mavfile,
-    args,  # Place your own arguments here
-    # Add other necessary worker arguments here
+    heartbeat_period_s: float,
+    disconnect_threshold: int,
+    output_queue: queue_proxy_wrapper.QueueProxyWrapper,
+    controller: worker_controller.WorkerController,
 ) -> None:
     """
     Worker process.
@@ -47,8 +49,32 @@ def heartbeat_receiver_worker(
     #                          ↓ BOOTCAMPERS MODIFY BELOW THIS COMMENT ↓
     # =============================================================================================
     # Instantiate class object (heartbeat_receiver.HeartbeatReceiver)
+    ok, instance = heartbeat_receiver.HeartbeatReceiver.create(
+        connection,
+        heartbeat_period_s,
+        local_logger,
+    )
+    if not ok or instance is None:
+        local_logger.error("Failed to create HeartbeatReceiver instance", True)
+        return
 
     # Main loop: do work.
+    missed_in_row = 0
+    while not controller.is_exit_requested():
+        controller.check_pause()
+        try:
+            _ok, state, missed = instance.run(disconnect_threshold, local_logger)
+        except Exception as e:  # pylint: disable=broad-except
+            local_logger.error(f"Heartbeat receive failed: {e}", True)
+            state, missed = "Disconnected", 1
+        if missed:
+            missed_in_row += 1
+            if missed_in_row >= disconnect_threshold:
+                state = "Disconnected"
+        else:
+            missed_in_row = 0
+            state = "Connected"
+        output_queue.queue.put(state)
 
 
 # =================================================================================================

@@ -1,0 +1,28 @@
+15:52:18: [INFO] [/Users/tomalmog/Clubs/WARG/p2/tests/integration/mock_drones/command_drone.py | main | 45] Logger initialized
+15:52:18: [INFO] [/Users/tomalmog/Clubs/WARG/p2/tests/integration/mock_drones/command_drone.py | main | 76] Received a valid command
+15:52:18: [INFO] [/Users/tomalmog/Clubs/WARG/p2/tests/integration/mock_drones/command_drone.py | main | 76] Received a valid command
+15:52:19: [INFO] [/Users/tomalmog/Clubs/WARG/p2/tests/integration/mock_drones/command_drone.py | main | 76] Received a valid command
+15:52:19: [INFO] [/Users/tomalmog/Clubs/WARG/p2/tests/integration/mock_drones/command_drone.py | main | 76] Received a valid command
+15:52:22: [INFO] [/Users/tomalmog/Clubs/WARG/p2/tests/integration/mock_drones/command_drone.py | main | 76] Received a valid command
+15:52:22: [INFO] [/Users/tomalmog/Clubs/WARG/p2/tests/integration/mock_drones/command_drone.py | main | 76] Received a valid command
+15:52:23: [INFO] [/Users/tomalmog/Clubs/WARG/p2/tests/integration/mock_drones/command_drone.py | main | 76] Received a valid command
+15:52:23: [INFO] [/Users/tomalmog/Clubs/WARG/p2/tests/integration/mock_drones/command_drone.py | main | 76] Received a valid command
+15:52:24: [INFO] [/Users/tomalmog/Clubs/WARG/p2/tests/integration/mock_drones/command_drone.py | main | 76] Received a valid command
+15:52:24: [INFO] [/Users/tomalmog/Clubs/WARG/p2/tests/integration/mock_drones/command_drone.py | main | 76] Received a valid command
+15:52:25: [INFO] [/Users/tomalmog/Clubs/WARG/p2/tests/integration/mock_drones/command_drone.py | main | 76] Received a valid command
+15:52:25: [INFO] [/Users/tomalmog/Clubs/WARG/p2/tests/integration/mock_drones/command_drone.py | main | 76] Received a valid command
+15:52:26: [INFO] [/Users/tomalmog/Clubs/WARG/p2/tests/integration/mock_drones/command_drone.py | main | 76] Received a valid command
+15:52:26: [INFO] [/Users/tomalmog/Clubs/WARG/p2/tests/integration/mock_drones/command_drone.py | main | 76] Received a valid command
+15:52:27: [INFO] [/Users/tomalmog/Clubs/WARG/p2/tests/integration/mock_drones/command_drone.py | main | 76] Received a valid command
+15:52:27: [INFO] [/Users/tomalmog/Clubs/WARG/p2/tests/integration/mock_drones/command_drone.py | main | 76] Received a valid command
+15:52:28: [INFO] [/Users/tomalmog/Clubs/WARG/p2/tests/integration/mock_drones/command_drone.py | main | 76] Received a valid command
+15:52:28: [INFO] [/Users/tomalmog/Clubs/WARG/p2/tests/integration/mock_drones/command_drone.py | main | 76] Received a valid command
+15:52:29: [INFO] [/Users/tomalmog/Clubs/WARG/p2/tests/integration/mock_drones/command_drone.py | main | 76] Received a valid command
+15:52:29: [INFO] [/Users/tomalmog/Clubs/WARG/p2/tests/integration/mock_drones/command_drone.py | main | 76] Received a valid command
+15:52:30: [INFO] [/Users/tomalmog/Clubs/WARG/p2/tests/integration/mock_drones/command_drone.py | main | 76] Received a valid command
+15:52:30: [INFO] [/Users/tomalmog/Clubs/WARG/p2/tests/integration/mock_drones/command_drone.py | main | 76] Received a valid command
+15:52:31: [INFO] [/Users/tomalmog/Clubs/WARG/p2/tests/integration/mock_drones/command_drone.py | main | 76] Received a valid command
+15:52:31: [INFO] [/Users/tomalmog/Clubs/WARG/p2/tests/integration/mock_drones/command_drone.py | main | 76] Received a valid command
+15:52:32: [INFO] [/Users/tomalmog/Clubs/WARG/p2/tests/integration/mock_drones/command_drone.py | main | 76] Received a valid command
+15:52:32: [INFO] [/Users/tomalmog/Clubs/WARG/p2/tests/integration/mock_drones/command_drone.py | main | 76] Received a valid command
+15:52:33: [ERROR] [/Users/tomalmog/Clubs/WARG/p2/tests/integration/mock_drones/command_drone.py | main | 80] Recieved extra command

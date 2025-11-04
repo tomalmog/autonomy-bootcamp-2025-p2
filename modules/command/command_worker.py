@@ -19,8 +19,13 @@ from ..common.modules.logger import logger
 def command_worker(
     connection: mavutil.mavfile,
     target: command.Position,
-    args,  # Place your own arguments here
-    # Add other necessary worker arguments here
+    telemetry_period_s: float,
+    z_speed_m_s: float,
+    angle_tolerance_deg: float,
+    height_tolerance_m: float,
+    input_queue: queue_proxy_wrapper.QueueProxyWrapper,
+    output_queue: queue_proxy_wrapper.QueueProxyWrapper,
+    controller: worker_controller.WorkerController,
 ) -> None:
     """
     Worker process.
@@ -48,8 +53,35 @@ def command_worker(
     #                          ↓ BOOTCAMPERS MODIFY BELOW THIS COMMENT ↓
     # =============================================================================================
     # Instantiate class object (command.Command)
+    ok, instance = command.Command.create(
+        connection,
+        target,
+        TURNING_SPEED := 5.0,  # default turning speed if not specified elsewhere
+        local_logger,
+    )
+    if not ok or instance is None:
+        local_logger.error("Failed to create Command instance", True)
+        return
 
     # Main loop: do work.
+    while not controller.is_exit_requested():
+        controller.check_pause()
+        data = input_queue.queue.get()
+        if data is None:
+            break
+        try:
+            success, output = instance.run(
+                data,
+                telemetry_period_s,
+                z_speed_m_s,
+                angle_tolerance_deg,
+                height_tolerance_m,
+            )
+        except Exception as e:  # pylint: disable=broad-except
+            local_logger.error(f"Command run failed: {e}", True)
+            success, output = False, None
+        if success and output is not None:
+            output_queue.queue.put(output)
 
 
 # =================================================================================================

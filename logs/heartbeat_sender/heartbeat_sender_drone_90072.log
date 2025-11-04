@@ -1,0 +1,12 @@
+15:55:43: [INFO] [/Users/tomalmog/Clubs/WARG/p2/tests/integration/mock_drones/heartbeat_sender_drone.py | main | 40] Logger initialized
+15:55:45: [INFO] [/Users/tomalmog/Clubs/WARG/p2/tests/integration/mock_drones/heartbeat_sender_drone.py | main | 71] Drone: Recieved heartbeat!
+15:55:46: [INFO] [/Users/tomalmog/Clubs/WARG/p2/tests/integration/mock_drones/heartbeat_sender_drone.py | main | 71] Drone: Recieved heartbeat!
+15:55:47: [INFO] [/Users/tomalmog/Clubs/WARG/p2/tests/integration/mock_drones/heartbeat_sender_drone.py | main | 71] Drone: Recieved heartbeat!
+15:55:48: [INFO] [/Users/tomalmog/Clubs/WARG/p2/tests/integration/mock_drones/heartbeat_sender_drone.py | main | 71] Drone: Recieved heartbeat!
+15:55:49: [INFO] [/Users/tomalmog/Clubs/WARG/p2/tests/integration/mock_drones/heartbeat_sender_drone.py | main | 71] Drone: Recieved heartbeat!
+15:55:50: [INFO] [/Users/tomalmog/Clubs/WARG/p2/tests/integration/mock_drones/heartbeat_sender_drone.py | main | 71] Drone: Recieved heartbeat!
+15:55:51: [INFO] [/Users/tomalmog/Clubs/WARG/p2/tests/integration/mock_drones/heartbeat_sender_drone.py | main | 71] Drone: Recieved heartbeat!
+15:55:52: [INFO] [/Users/tomalmog/Clubs/WARG/p2/tests/integration/mock_drones/heartbeat_sender_drone.py | main | 71] Drone: Recieved heartbeat!
+15:55:53: [INFO] [/Users/tomalmog/Clubs/WARG/p2/tests/integration/mock_drones/heartbeat_sender_drone.py | main | 71] Drone: Recieved heartbeat!
+15:55:54: [INFO] [/Users/tomalmog/Clubs/WARG/p2/tests/integration/mock_drones/heartbeat_sender_drone.py | main | 71] Drone: Recieved heartbeat!
+15:55:55: [INFO] [/Users/tomalmog/Clubs/WARG/p2/tests/integration/mock_drones/heartbeat_sender_drone.py | main | 80] Passed!
