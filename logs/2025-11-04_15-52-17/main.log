@@ -1,4 +1,0 @@
-15:52:17: [INFO] [/Users/tomalmog/Clubs/WARG/p2/modules/common/modules/logger/logger_main_setup.py | setup_main_logger | 62] main logger initialized
-15:52:18: [INFO] [/Users/tomalmog/Clubs/WARG/p2/tests/integration/test_command.py | main | 144] Connected!
-15:52:18: [INFO] [/Users/tomalmog/Clubs/WARG/p2/tests/integration/test_command.py | read_queue | 81] CHANGE ALTITUDE: 1.0 | CHANGE YAW: 63.43494882292201
-15:52:19: [INFO] [/Users/tomalmog/Clubs/WARG/p2/tests/integration/test_command.py | read_queue | 81] CHANGE ALTITUDE: -1.0 | CHANGE YAW: 63.43494882292201

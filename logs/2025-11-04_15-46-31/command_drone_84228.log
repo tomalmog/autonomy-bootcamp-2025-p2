@@ -1,2 +1,0 @@
-15:46:32: [INFO] [/Users/tomalmog/Clubs/WARG/p2/tests/integration/mock_drones/command_drone.py | main | 45] Logger initialized
-15:46:35: [ERROR] [/Users/tomalmog/Clubs/WARG/p2/tests/integration/mock_drones/command_drone.py | main | 51] Sent incorrect message type or timed out, still expecting mesages
