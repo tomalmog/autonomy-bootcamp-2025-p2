@@ -192,17 +192,17 @@ def main() -> int:
     current_state = "Unknown"
     while time.time() < end_time:
         try:
+            # Heartbeat state
             state = hb_recv_to_main_queue.queue.get(timeout=HEARTBEAT_PERIOD_S * 2)
             current_state = str(state)
             main_logger.info(f"Heartbeat state: {current_state}")
             if current_state == "Disconnected":
                 break
-        except:  # pylint: disable=bare-except
-            pass
-        # Also read any command outputs
-        try:
-            cmd_out = command_to_main_queue.queue.get(timeout=0.1)
-            if cmd_out is not None:
+            # Drain any command outputs without blocking
+            while True:
+                cmd_out = command_to_main_queue.queue.get_nowait()
+                if cmd_out is None:
+                    continue
                 main_logger.info(f"Command: {cmd_out}")
         except:  # pylint: disable=bare-except
             pass
