@@ -22,6 +22,7 @@ class HeartbeatReceiver:
         cls,
         connection: mavutil.mavfile,
         heartbeat_period_s: float,
+        disconnect_threshold: int,
         local_logger: logger.Logger,
     ) -> "tuple[bool, HeartbeatReceiver | None]":
         """
@@ -32,6 +33,7 @@ class HeartbeatReceiver:
                 HeartbeatReceiver.__private_key,
                 connection,
                 heartbeat_period_s,
+                disconnect_threshold,
             )
         except:  # pylint: disable=bare-except
             local_logger.error("Failed to create HeartbeatReceiver", True)
@@ -42,6 +44,7 @@ class HeartbeatReceiver:
         key: object,
         connection: mavutil.mavfile,
         heartbeat_period_s: float,
+        disconnect_threshold: int,
     ) -> None:
         assert key is HeartbeatReceiver.__private_key, "Use create() method"
 
@@ -49,10 +52,10 @@ class HeartbeatReceiver:
         self.__connection = connection
         self.__period_s = heartbeat_period_s
         self.__missed_in_row = 0
+        self.__disconnect_threshold = disconnect_threshold
 
     def run(
         self,
-        disconnect_threshold: int,
         local_logger: logger.Logger,
     ) -> "tuple[bool, str]":
         """
@@ -74,7 +77,9 @@ class HeartbeatReceiver:
         else:
             self.__missed_in_row = 0
 
-        state = "Connected" if self.__missed_in_row < disconnect_threshold else "Disconnected"
+        state = (
+            "Connected" if self.__missed_in_row < self.__disconnect_threshold else "Disconnected"
+        )
         local_logger.info(f"State: {state}", True)
         return True, state
 
