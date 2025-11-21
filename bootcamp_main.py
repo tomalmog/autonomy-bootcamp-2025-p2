@@ -31,6 +31,7 @@ CONNECTION_STRING = "tcp:localhost:12345"
 # Set queue max sizes (<= 0 for infinity)
 TELEM_TO_COMMAND_QUEUE_MAX = 32
 HEARTBEAT_RECV_TO_MAIN_QUEUE_MAX = 64
+COMMAND_TO_MAIN_QUEUE_MAX = 64
 
 # Set worker counts
 HEARTBEAT_SENDER_COUNT = 1
@@ -98,6 +99,9 @@ def main() -> int:
     hb_recv_to_main_queue = queue_proxy_wrapper.QueueProxyWrapper(
         mp_manager, HEARTBEAT_RECV_TO_MAIN_QUEUE_MAX
     )
+    command_to_main_queue = queue_proxy_wrapper.QueueProxyWrapper(
+        mp_manager, COMMAND_TO_MAIN_QUEUE_MAX
+    )
 
     # Create worker properties for each worker type (what inputs it takes, how many workers)
     # Heartbeat sender
@@ -156,7 +160,7 @@ def main() -> int:
             HEIGHT_TOLERANCE_M,
         ),
         input_queues=[telem_to_command_queue],
-        output_queues=[],  # In a real system, add a main queue if needed
+        output_queues=[command_to_main_queue],
         controller=controller,
         local_logger=main_logger,
     )
@@ -171,8 +175,9 @@ def main() -> int:
         ok, mgr = worker_manager.WorkerManager.create(
             worker_properties=props, local_logger=main_logger
         )
-        if not ok or mgr is None:
+        if not ok:
             return -1
+        assert mgr is not None
         worker_managers.append(mgr)
 
     # Start worker processes
@@ -194,6 +199,13 @@ def main() -> int:
                 break
         except:  # pylint: disable=bare-except
             pass
+        # Also read any command outputs
+        try:
+            cmd_out = command_to_main_queue.queue.get(timeout=0.1)
+            if cmd_out is not None:
+                main_logger.info(f"Command: {cmd_out}")
+        except:  # pylint: disable=bare-except
+            pass
 
     # Stop the processes
     controller.request_exit()
@@ -203,6 +215,7 @@ def main() -> int:
     # Fill and drain queues from END TO START
     telem_to_command_queue.fill_and_drain_queue()
     hb_recv_to_main_queue.fill_and_drain_queue()
+    command_to_main_queue.fill_and_drain_queue()
 
     main_logger.info("Queues cleared")
 

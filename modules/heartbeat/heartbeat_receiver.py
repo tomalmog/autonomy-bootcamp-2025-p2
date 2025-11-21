@@ -48,12 +48,13 @@ class HeartbeatReceiver:
         # Do any intializiation here
         self.__connection = connection
         self.__period_s = heartbeat_period_s
+        self.__missed_in_row = 0
 
     def run(
         self,
         disconnect_threshold: int,
         local_logger: logger.Logger,
-    ) -> "tuple[bool, str, int]":
+    ) -> "tuple[bool, str]":
         """
         Attempt to recieve a heartbeat message.
         If disconnected for over a threshold number of periods,
@@ -67,14 +68,15 @@ class HeartbeatReceiver:
             local_logger.error(f"Exception while receiving heartbeat: {e}", True)
             msg = None
 
-        missed = 0
-        state = "Connected"
         if not msg or msg.get_type() != "HEARTBEAT":
-            missed = 1
+            self.__missed_in_row += 1
             local_logger.warning("Missed heartbeat", True)
-        if missed >= disconnect_threshold:
-            state = "Disconnected"
-        return True, state, missed
+        else:
+            self.__missed_in_row = 0
+
+        state = "Connected" if self.__missed_in_row < disconnect_threshold else "Disconnected"
+        local_logger.info(f"State: {state}", True)
+        return True, state
 
 
 # =================================================================================================

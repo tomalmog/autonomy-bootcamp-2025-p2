@@ -77,7 +77,7 @@ def read_queue(
         except Exception:  # pylint: disable=broad-except
             break
         if item is None:
-            break
+            continue
         main_logger.info(str(item))
 
 

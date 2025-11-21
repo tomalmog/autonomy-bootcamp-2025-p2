@@ -61,16 +61,18 @@ def command_worker(
         5.0,  # default turning speed (deg/s)
         local_logger,
     )
-    if not ok or instance is None:
+    if not ok:
         local_logger.error("Failed to create Command instance", True)
         return
+    # Get Pylance to stop complaining
+    assert instance is not None
 
     # Main loop: do work.
     while not controller.is_exit_requested():
         controller.check_pause()
         data = input_queue.queue.get()
         if data is None:
-            break
+            continue
         try:
             success, output = instance.run(
                 data,
@@ -82,7 +84,9 @@ def command_worker(
         except Exception as e:  # pylint: disable=broad-except
             local_logger.error(f"Command run failed: {e}", True)
             success, output = False, None
-        if success and output is not None:
+        if success:
+            # Log and forward the output
+            local_logger.info(str(output), None)
             output_queue.queue.put(output)
 
 

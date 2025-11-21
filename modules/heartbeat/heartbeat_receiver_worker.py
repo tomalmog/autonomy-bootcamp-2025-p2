@@ -54,26 +54,19 @@ def heartbeat_receiver_worker(
         heartbeat_period_s,
         local_logger,
     )
-    if not ok or instance is None:
+    if not ok:
         local_logger.error("Failed to create HeartbeatReceiver instance", True)
         return
+    assert instance is not None
 
     # Main loop: do work.
-    missed_in_row = 0
     while not controller.is_exit_requested():
         controller.check_pause()
         try:
-            _ok, state, missed = instance.run(disconnect_threshold, local_logger)
+            _ok, state = instance.run(disconnect_threshold, local_logger)
         except Exception as e:  # pylint: disable=broad-except
             local_logger.error(f"Heartbeat receive failed: {e}", True)
-            state, missed = "Disconnected", 1
-        if missed:
-            missed_in_row += 1
-            if missed_in_row >= disconnect_threshold:
-                state = "Disconnected"
-        else:
-            missed_in_row = 0
-            state = "Connected"
+            state = "Disconnected"
         output_queue.queue.put(state)
 
 

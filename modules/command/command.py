@@ -146,7 +146,7 @@ class Command:  # pylint: disable=too-many-instance-attributes
                 delta_rad += 2 * math.pi
             delta_deg = math.degrees(delta_rad)
             if abs(delta_deg) > angle_tolerance_deg:
-                direction = 1 if delta_deg >= 0 else -1
+                direction = -1 if delta_deg >= 0 else 1
                 try:
                     self.__connection.mav.command_long_send(
                         1,
